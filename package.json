@@ -23,7 +23,9 @@
     "@types/cesium": "^1.47.3",
     "cesium": "^1.50.0",
     "core-js": "^2.5.4",
+    "ng-socket-io": "^0.2.4",
     "rxjs": "~6.3.3",
+    "rxjs-compat": "^6.3.3",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
