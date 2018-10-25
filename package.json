@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --port 4200 --proxy-config ./config.proxy.json --open",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -21,11 +21,13 @@
     "@angular/platform-browser-dynamic": "~7.0.0",
     "@angular/router": "~7.0.0",
     "@types/cesium": "^1.47.3",
+    "angular-cesium": "0.0.53",
     "cesium": "^1.50.0",
     "core-js": "^2.5.4",
     "ng-socket-io": "^0.2.4",
     "rxjs": "~6.3.3",
     "rxjs-compat": "^6.3.3",
+    "socket.io-client": "^2.1.1",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
