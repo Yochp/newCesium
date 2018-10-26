@@ -1,32 +1,26 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import {Component, OnInit, ElementRef} from '@angular/core';
+import {SocketService} from '../socket.service';
 
 @Component({
   selector: 'app-cesium',
   templateUrl: './cesium.component.html',
-  styleUrls: ['./cesium.component.css']
+  styleUrls: ['./cesium.component.css'],
+  providers: [SocketService]
 })
 
-//
-// export class Acs {
-//   id: number;
-//   // entity?: AcEntity;
-//   actionType: ActionType;
-// }
-// export enum ActionType {
-//   ADD_UPDATE,
-//   DELETE
-// }
 
 export class CesiumComponent implements OnInit {
 
-  constructor (private el: ElementRef) { }
-
+  constructor(private el: ElementRef, private socketService: SocketService) {
+  }
 
 
   ngOnInit() {
-    // const viewer = new Cesium.Viewer(this.el.nativeElement);
+      this.socketService.socketInit();
+      console.log('call to socket init from ngOnInit');
+    }
 
 
   }
 
-}
+

@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { CesiumComponent } from './cesium/cesium.component';
 // import { map } from 'rxjs/operators';
 import { AngularCesiumModule } from 'angular-cesium';
+import {FormsModule} from '@angular/forms';
 
 
 
@@ -47,6 +48,7 @@ import { AngularCesiumModule } from 'angular-cesium';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     // SocketIoModule.forRoot(config),
     AngularCesiumModule.forRoot()
 
