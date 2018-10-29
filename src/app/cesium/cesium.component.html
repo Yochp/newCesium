@@ -1,9 +1,10 @@
-<p>
-  cesium works!
-</p>
+<!--<p *ngFor="let radar of radars$">-->
+  <!--{{radar.name}}-->
+<!--</p>-->
 
 <ac-map>
-  <!--<ac-layer acFor="let plane of planes$" [context]="this" [store]="true">-->
+
+  <ac-layer  acFor="let radar of radars$" [context]="this" [store]="true">
     <!--<ac-billboard-desc props="{-->
                     <!--image: plane.image,-->
                     <!--position: plane.position-->
@@ -15,5 +16,6 @@
                   <!--fillColor: getColor(plane)-->
           <!--}">-->
     <!--</ac-label-desc>-->
-  <!--</ac-layer>-->
+  </ac-layer>
 </ac-map>
+
