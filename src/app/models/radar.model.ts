@@ -1,14 +1,7 @@
-// export class Radar {
-//   // id: number;
-//   name?: string;
-//   // location: string;
-//   long?: number;
-//   let?: number;
-//
-//   constructor() {
-//
-//   }
-// }
+export class RadarPositoin {
+  long?: number;
+  let?: number;
+}
 
 export interface Radar {
   id: string;
@@ -22,3 +15,6 @@ export interface Position {
   lon: number;
   alt: number;
 }
+
+
+

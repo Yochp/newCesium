@@ -32,22 +32,6 @@ import { Store } from '@ngrx/store';
 })
 
 export class SocketService {
-  // radars;
-  //
-  // // radarsPromise;
-  //
-  //
-  // socketInit() {
-  //   const socket = io('http://localhost:3000');
-  //   socket.on('get_radars', (data) => {
-  //     this.radars = data;
-  //     console.log(data);
-  //     console.log(this.radars);
-  //
-  //   });
-  //
-  // }
-
   private url = 'http://localhost:3000';
   private socket;
 
@@ -68,6 +52,19 @@ export class SocketService {
     return observable;
   }
 
+
+  getRadarsPosition() {
+    const observable = new Observable(observer => {
+      this.socket = io(this.url);
+      this.socket.on('get_radarsPosition', (data) => {
+        observer.next(data);
+      });
+      // return () => {
+      //   this.socket.disconnect();
+      // };
+    });
+    return observable;
+  }
 }
 
 

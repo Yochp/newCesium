@@ -1,65 +1,59 @@
-import {Component, OnInit, ElementRef, OnDestroy} from '@angular/core';
+import {Component, OnInit, ElementRef, OnDestroy, ViewChild} from '@angular/core';
 import {SocketService} from '../socket.service';
-import {Observable} from 'rxjs';
-import {from, Subject, BehaviorSubject} from 'rxjs';
-import { AcEntity } from 'angular-cesium';
-import { AcNotification, ActionType } from 'angular-cesium';
+import {Observable, BehaviorSubject, from} from 'rxjs';
+import {AcNotification, AcLayerComponent, ActionType, ViewerConfiguration, AcEntity} from 'angular-cesium';
+import {RadarPositoin} from '../models/radar.model';
+
 @Component({
   selector: 'app-cesium',
   templateUrl: './cesium.component.html',
   styleUrls: ['./cesium.component.css'],
-  providers: [SocketService]
+  providers: [SocketService, ViewerConfiguration]
 })
 
 
-
-
-
 export class CesiumComponent implements OnInit, OnDestroy {
+  @ViewChild(AcLayerComponent) layer: AcLayerComponent;
+
   connection;
   radars$: Observable<AcNotification>;
 
-  constructor(private el: ElementRef, private socketService: SocketService) {
+  constructor(private el: ElementRef, private socketService: SocketService, private viewerConf: ViewerConfiguration) {
 
     this.radars$ = new Observable<AcNotification>();
 
-  }
+    viewerConf.viewerOptions = {
+      selectionIndicator: false,
+      timeline: false,
+      infoBox: false,
+      fullscreenButton: false,
+      baseLayerPicker: false,
+      animation: false,
+      shouldAnimate: false,
+      homeButton: false,
+      geocoder: false,
+      navigationHelpButton: false,
+      navigationInstructionsInitiallyVisible: false,
+    };
 
+    viewerConf.viewerModifier = (viewer: any) => {
+      viewer.screenSpaceEventHandler.removeInputAction(Cesium.ScreenSpaceEventType.LEFT_DOUBLE_CLICK);
+      viewer.bottomContainer.remove();
+    };
+  }
 
   ngOnInit() {
 
     this.connection = this.socketService.socketInit().subscribe(radarsData => {
-      console.log(radarsData);
       this.radars$ = new BehaviorSubject(radarsData);
       console.log('call to socket init from ngOnInit observable');
       console.log(this.radars$);
     });
-
-
-    // const viewer = new Cesium.Viewer(this.el.nativeElement);
-
   }
-
-
-
-
-
 
 
   ngOnDestroy() {
     this.connection.unsubscribe();
   }
+
 }
-
-
-
-
-// entity = new AcEntity({
-//   id: 0,
-//   name: 'click me',
-//   position: Cesium.Cartesian3.fromRadians(0.5, 0.5),
-// });
-// export enum ActionType {
-//   ADD_UPDATE,
-//   DELETE
-// }

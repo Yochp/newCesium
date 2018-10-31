@@ -4,18 +4,28 @@
 
 <ac-map>
 
-  <ac-layer  acFor="let radar of radars$" [context]="this" [store]="true">
-    <ac-billboard-desc props="{
-                    name: radar.name,
-                    position: radar.position
-                  }">
-    </ac-billboard-desc>
+  <!--<ac-layer  acFor="let radar of radars$" [context]="this" [store]="true">-->
+    <!--<ac-billboard-desc props="{-->
+                    <!--name: radar.name,-->
+                    <!--position: radar.position-->
+                  <!--}">-->
+    <!--</ac-billboard-desc>-->
+    <!--&lt;!&ndash;<ac-label-desc props="{&ndash;&gt;-->
+                  <!--&lt;!&ndash;position: plane.position,&ndash;&gt;-->
+                  <!--&lt;!&ndash;text: plane.name,&ndash;&gt;-->
+                  <!--&lt;!&ndash;fillColor: getColor(plane)&ndash;&gt;-->
+          <!--&lt;!&ndash;}">&ndash;&gt;-->
+    <!--&lt;!&ndash;</ac-label-desc>&ndash;&gt;-->
+  <!--</ac-layer>-->
+
+  <app-radars></app-radars>
+
+  <!--<ac-layer acFor="let base of bases$" [context]="this" [show]="show">-->
     <!--<ac-label-desc props="{-->
-                  <!--position: plane.position,-->
-                  <!--text: plane.name,-->
-                  <!--fillColor: getColor(plane)-->
-          <!--}">-->
-    <!--</ac-label-desc>-->
-  </ac-layer>
+      <!--show: base.show,-->
+      <!--text: base.name,-->
+      <!--position: base.position-->
+    <!--}"></ac-label-desc>-->
+  <!--</ac-layer>-->
 </ac-map>
 

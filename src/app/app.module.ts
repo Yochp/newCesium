@@ -7,6 +7,7 @@ import { CesiumComponent } from './cesium/cesium.component';
 // import { map } from 'rxjs/operators';
 import { AngularCesiumModule } from 'angular-cesium';
 import {FormsModule} from '@angular/forms';
+import { RadarsComponent } from './radars/radars.component';
 
 
 
@@ -43,7 +44,8 @@ import {FormsModule} from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
-    CesiumComponent
+    CesiumComponent,
+    RadarsComponent
   ],
   imports: [
     BrowserModule,
