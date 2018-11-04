@@ -1,6 +1,9 @@
-export class RadarPositoin {
-  long?: number;
-  let?: number;
+import {Observable} from 'rxjs';
+
+export interface RadarPositoin {
+  lon: number;
+  lat: number;
+  id: string;
 }
 
 export interface Radar {

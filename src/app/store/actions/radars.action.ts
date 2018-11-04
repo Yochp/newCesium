@@ -3,7 +3,7 @@
 //
 // export const ADD_RADARS = 'ADD_RADARS';
 //
-// export class AddPoints implements Action {
+// export class AddRadars implements Action {
 //   readonly type = ADD_RADARS;
 //   constructor(public payload) {}
 // }

@@ -1,4 +1,4 @@
-<ac-layer acFor="let base of radars$" [context]="this" [show]="show">
+<ac-layer  *ngIf="radars$ != undefined && radars$ != null" acFor="let base of radars$" [context]="this" [show]="show">
   <ac-label-desc props="{
       show: base.show,
       text: base.name,

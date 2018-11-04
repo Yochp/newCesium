@@ -8,6 +8,11 @@ import { CesiumComponent } from './cesium/cesium.component';
 import { AngularCesiumModule } from 'angular-cesium';
 import {FormsModule} from '@angular/forms';
 import { RadarsComponent } from './radars/radars.component';
+// import { reducer as radars} from './store/reducers/radars.reducer';
+// import { EffectsModule } from '@ngrx/effects';
+// import { RadarsEffect } from './store/effects/radars.effect';
+// import { StoreModule } from '@ngrx/store';
+
 
 
 
@@ -52,7 +57,9 @@ import { RadarsComponent } from './radars/radars.component';
     AppRoutingModule,
     FormsModule,
     // SocketIoModule.forRoot(config),
-    AngularCesiumModule.forRoot()
+    AngularCesiumModule.forRoot(),
+    // StoreModule.forRoot({radars}),
+    // EffectsModule.forRoot([RadarsEffect])
 
   ],
   // providers: [ChatService],

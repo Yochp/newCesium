@@ -6,7 +6,8 @@ import { AcNotification, ActionType } from 'angular-cesium';
 
 // store
 import { Store } from '@ngrx/store';
-// import { AddPoints } from '../store/actions/points.action';
+// import { AddRadars } from './store/actions/radars.action';
+
 // export class WebSocketService {
 //   private socket;
 //
@@ -25,6 +26,7 @@ import { Store } from '@ngrx/store';
 //   }
 // }
 
+// let radarP: Observable<AcNotification>;
 
 
 @Injectable({
@@ -38,11 +40,16 @@ export class SocketService {
   // sendMessage(message) {
   //   this.socket.emit('add-message', message);
   // }
+  // constructor(private store: Store<any>) { }
+  constructor() { }
+
 
   socketInit() {
     const observable = new Observable<AcNotification>(observer => {
       this.socket = io(this.url);
       this.socket.on('get_radars', (data) => {
+        // ngrx
+        //       this.store.dispatch(new AddRadars(data));
         observer.next(data);
       });
       // return () => {
@@ -53,11 +60,22 @@ export class SocketService {
   }
 
 
-  getRadarsPosition() {
+  getRadarsPosition(): Observable<any> {
     const observable = new Observable(observer => {
       this.socket = io(this.url);
       this.socket.on('get_radarsPosition', (data) => {
+        // radarP = data;
+        // radarP.forEach( r => {
+        //     r.actionType = ActionType.ADD_UPDATE;
+        //     r.entity = { name: 'radra1', position: Cesium.Cartesian3.fromRadians(data.len, data.let), show: true };
+        //   });
+        // console.log('radarp');
+        // console.log(radarP);
+        // console.log('data');
+        // console.log(data);
         observer.next(data);
+        // console.log('data'+ data);
+
       });
       // return () => {
       //   this.socket.disconnect();
