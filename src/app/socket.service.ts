@@ -26,7 +26,6 @@ import { Store } from '@ngrx/store';
 //   }
 // }
 
-// let radarP: Observable<AcNotification>;
 
 
 @Injectable({
@@ -37,9 +36,6 @@ export class SocketService {
   private url = 'http://localhost:3000';
   private socket;
 
-  // sendMessage(message) {
-  //   this.socket.emit('add-message', message);
-  // }
   // constructor(private store: Store<any>) { }
   constructor() { }
 
@@ -54,7 +50,6 @@ export class SocketService {
       });
       // return () => {
       //   this.socket.disconnect();
-      // };
     });
     return observable;
   }
@@ -64,22 +59,8 @@ export class SocketService {
     const observable = new Observable(observer => {
       this.socket = io(this.url);
       this.socket.on('get_radarsPosition', (data) => {
-        // radarP = data;
-        // radarP.forEach( r => {
-        //     r.actionType = ActionType.ADD_UPDATE;
-        //     r.entity = { name: 'radra1', position: Cesium.Cartesian3.fromRadians(data.len, data.let), show: true };
-        //   });
-        // console.log('radarp');
-        // console.log(radarP);
-        // console.log('data');
-        // console.log(data);
         observer.next(data);
-        // console.log('data'+ data);
-
       });
-      // return () => {
-      //   this.socket.disconnect();
-      // };
     });
     return observable;
   }

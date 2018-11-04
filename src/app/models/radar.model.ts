@@ -4,6 +4,7 @@ export interface RadarPositoin {
   lon: number;
   lat: number;
   id: string;
+  name: string;
 }
 
 export interface Radar {
