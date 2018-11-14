@@ -8,7 +8,7 @@ import {AcNotification, ActionType} from 'angular-cesium';
 // store
 import {Store} from '@ngrx/store';
 import {RadarPositoin} from './models/radar.model';
-import {RadarPositoinState} from './store/state/state';
+// import {RadarPositoinState} from './store/state/state';
 import {AddRadars} from './store/actions/radars.action';
 import {AddPoints} from './store/actions/points.action';
 
@@ -55,10 +55,27 @@ export class SocketService {
     //       console.log('sdsdsds' + data);
     //     });
 
-    this.socket.on('get_randomPoint', (data: any) => {
-      this.store.dispatch(new AddPoints({data}));
+
+
+    this.socket.on('get_randomPoint', (data) => {
+      for (const el of Object.keys(data)) {
+        this.store.dispatch(new AddPoints( data[el]));
+      }
+          // this.store.dispatch(new AddPoints({data}));
+
     });
+
+
+    // this.socket.on('get_randomP', (data) => {
+    //   this.store.dispatch(new AddPoints({data}));
+    //   console.log('log!');
+    //   console.log(data);
+    // });
+
+
   }
+
+
 
   //
   // socketInit() {
@@ -76,10 +93,14 @@ export class SocketService {
   // }
 
 
+
   getRadarsPosition(): Observable<any> {
     const observable = new Observable(observer => {
       this.socket.on('get_radarsPosition', (data) => {
-        this.store.dispatch(new AddRadars({data}));
+
+        for (const el of Object.keys(data)) {
+          this.store.dispatch(new AddRadars( data[el]));
+        }
         observer.next(data);
       });
     });
@@ -126,6 +147,12 @@ export class SocketService {
   //     });
   //   });
   // }
+
+
+
+
+
+
 }
 
 console.log('socketClient on');

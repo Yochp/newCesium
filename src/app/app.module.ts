@@ -8,10 +8,12 @@ import { CesiumComponent } from './cesium/cesium.component';
 import { AngularCesiumModule } from 'angular-cesium';
 import {FormsModule} from '@angular/forms';
 import { RadarsComponent } from './radars/radars.component';
-// import { reducer as radars} from './store/reducers/radars.reducer';
+import { RadarReducer } from './store/reducers/radars.reducer';
+import { randomPointReducer } from './store/reducers/points.reducer';
 // import { EffectsModule } from '@ngrx/effects';
 // import { RadarsEffect } from './store/effects/radars.effect';
-// import { StoreModule } from '@ngrx/store';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 
 
@@ -58,6 +60,13 @@ import { RadarsComponent } from './radars/radars.component';
     FormsModule,
     // SocketIoModule.forRoot(config),
     AngularCesiumModule.forRoot(),
+    StoreModule.forRoot({
+      RadarReducer: RadarReducer,
+      randomPointReducer: randomPointReducer
+    }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 10
+    })
     // StoreModule.forRoot({radars}),
     // EffectsModule.forRoot([RadarsEffect])
 

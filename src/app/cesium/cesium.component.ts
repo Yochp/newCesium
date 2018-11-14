@@ -40,15 +40,16 @@ export class CesiumComponent implements OnInit, OnDestroy {
       viewer.screenSpaceEventHandler.removeInputAction(Cesium.ScreenSpaceEventType.LEFT_DOUBLE_CLICK);
       viewer.bottomContainer.remove();
     };
+
   }
 
   ngOnInit() {
 
-    this.connection = this.socketService.socketInit().subscribe(radarsData => {
-      this.radars$ = new BehaviorSubject(radarsData);
-      console.log('call to socket init from ngOnInit observable');
-      console.log(this.radars$);
-    });
+    // this.connection = this.socketService.socketInit().subscribe(radarsData => {
+    //   this.radars$ = new BehaviorSubject(radarsData);
+    //   console.log('call to socket init from ngOnInit observable');
+    //   console.log(this.radars$);
+    // });
   }
 
 
